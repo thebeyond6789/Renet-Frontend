@@ -1,0 +1,189 @@
+
+/* containerPost */
+.containerPost {
+  width: 82%;
+  height: 100vh;
+  display: flex;
+  overflow-y: scroll;
+}
+.containerPost::-webkit-scrollbar {
+  display: none;
+}
+/* left */
+.containerPost .postLeft {
+  width: 66%;
+}
+.containerPost .item {
+  width: 90%;
+  margin: auto;
+  /* border: 1px solid red; */
+}
+.containerPost .item h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.containerPost .item .truocdo {
+  margin-top: 20px;
+}
+.containerPost .item .homnay h6,
+.containerPost .item .truocdo h6 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.containerPost .item .thongbaocon {
+  display: flex;
+}
+.containerPost .item .gachaffter {
+  background-color: aliceblue;
+  padding: 20px 0px;
+  margin-top: 5px;
+}
+.containerPost .item .gachaffter:hover {
+  cursor: pointer;
+}
+.containerPost .item .img {
+  width: 45px;
+  height: 45px;
+  border-radius: 200px;
+}
+.containerPost .item .img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 200px;
+}
+.containerPost .item .content {
+  margin-left: 5px;
+  width: 90%;
+}
+.containerPost .item .content a {
+  color: black;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+  margin-right: 5px;
+}
+.containerPost .item .content span {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* postRight */
+.containerPost .postRight {
+  width: 34%;
+  margin-top: 60px;
+}
+.containerPost .postRight .container_right {
+  width: 70%;
+}
+.containerPost .postRight .container_right .title {
+  margin-bottom: 20px;
+}
+.containerPost .postRight .container_right .title span {
+  font-size: 14px;
+  font-weight: 500;
+  color: gray;
+}
+.containerPost .postRight .container_right .title a {
+  font-size: 14px;
+  color: black;
+  transition: all 0.5s;
+  text-decoration: none;
+}
+.containerPost .postRight .container_right .title a:hover {
+  color: gray;
+}
+.containerPost .postRight .container_right .imgtaikhoan .item1 {
+  margin-bottom: 10px;
+}
+.containerPost .postRight .container_right .imgtaikhoan .item1 .img {
+  width: 45px;
+  height: 45px;
+  border-radius: 200px;
+}
+.containerPost .postRight .container_right .imgtaikhoan .item1 .img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 200px;
+}
+.containerPost .postRight .container_right .tentaikhoan {
+  margin-top: 3px;
+  margin-left: 5px;
+}
+.containerPost .postRight .container_right .tentaikhoan a {
+  font-size: 14px;
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  line-height: 15px;
+}
+.containerPost .postRight .container_right .tentaikhoan span {
+  color: gray;
+  font-size: 12px;
+}
+.containerPost .postRight .container_right .theodoi a {
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 45px;
+  transition: all 0.5s;
+}
+.containerPost .postRight .container_right .theodoi a:hover {
+  color: black;
+}
+
+/* máy tính bảng */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* container post */
+  .containerPost {
+    width: 90%;
+    margin: auto;
+  }
+
+  .containerPost .postLeft {
+    width: 100%;
+    margin: auto;
+  }
+
+  /* Hide postRight on mobile */
+  .containerPost .postRight {
+    display: none;
+  }
+}
+/* điện thoại */
+/* Mobile */
+@media (max-width: 767px) {
+  /* container post */
+  .containerPost {
+    display: block;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .containerPost .postLeft {
+    width: 100%;
+  }
+
+  .containerPost .item {
+    width: 100%;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+  .containerPost .item h3 {
+    text-align: center;
+    margin-top: 0px;
+  }
+  .containerPost .item .thongbaocon {
+    width: 94%;
+    margin: auto;
+  }
+  .containerPost .item .homnay h6,
+  .containerPost .item .truocdo h6 {
+    margin-left: 10px;
+    margin-top: 15px;
+  }
+  /* Hide postRight on mobile */
+  .containerPost .postRight {
+    display: none;
+  }
+}
