@@ -34,11 +34,13 @@ export default function Search() {
       setFilteredAccounts([]); // Không hiển thị gì nếu từ khóa rỗng
     } else {
       const normalizedSearchTerm = removeAccents(searchTerm); // Loại bỏ dấu khỏi searchTerm
+
       const results = accounts.filter(account => {
         const fullName = `${account.firstName} ${account.lastName}`;
         const normalizedFullName = removeAccents(fullName); // Loại bỏ dấu khỏi tên đầy đủ
         return normalizedFullName.includes(normalizedSearchTerm);
       });
+
       setFilteredAccounts(results);
     }
   }, [searchTerm, accounts]);
@@ -74,7 +76,7 @@ export default function Search() {
             </div>
             <div>
               <h6>Gần đây</h6>
-              {recentSearches.map((search, index) => (
+{recentSearches.map((search, index) => (
                 <div key={index} className="lichsu">
                   <a href="#">{search}</a>
                   <i className="fa-solid fa-xmark"></i>
