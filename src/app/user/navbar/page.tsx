@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Search from '../search/page'
 export default function Nav(){
     function ClickSearch(){
-        const navconhien = document.getElementById('ulnavcon') as HTMLElement;
+        let navconhien = document.getElementById('ulnavcon') as HTMLElement;
         if (navconhien.style.display === 'block') { //điều hiện nếu nó hiện
             navconhien.style.display = 'none'; // click dô thì nó ẩn
         } else {

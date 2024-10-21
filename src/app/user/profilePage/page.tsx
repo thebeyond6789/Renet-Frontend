@@ -69,7 +69,9 @@ export default function Profile(){
       </div>
       <PostIndividual/>
       <ReelIndividual/>
+      {/* <!-- người theo dõi --> */}
       <Flower/>
+      {/* <!-- dang theo dõi --> */}
       <DangTheoDoi/>
           </main>
         </>

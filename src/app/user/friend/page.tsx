@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../friend/friend.css';
 
 const Friend: React.FC = () => {
@@ -32,96 +32,33 @@ const Friend: React.FC = () => {
       }
     };
   }, []);
+  const [Accounts, setAccount] = useState<any>([])
+  useEffect(() => {
 
+    const FetchFriend = async () => {
+      const Res = await fetch("http://localhost:4000/account/allAccount")
+      const data = await Res.json();
+      setAccount(data);
+
+    }
+    FetchFriend();
+  });
   return (
     <>
       <div className="d-flex align-items-center justify-content-center" id="theChaFriend">
         <a className="prevFriendBtn bi bi-caret-left" id="btn"></a>
         <div className="containerFriend">
-          <div className="itemFriend">
+          {
+            Accounts.map((acc:any)=> (
+              <div className="itemFriend">
             <div className="img">
-              <img src="../img/hoangton1.jpg" alt="" />
+              <img src={`../img/${acc.avata}`} alt="" />
               <div className="trangthai"></div>
             </div>
-            <a href="#">Hoàng</a>
+            <a href="#">{acc.lastName}</a>
           </div>
-          <div className="itemFriend">
-            <div className="img">
-              <img src="../img/hoangton.jpg" alt="" />
-              <div className="trangthai"></div>
-            </div>
-            <a href="#">Hoàng</a>
-          </div>
-          <div className="itemFriend">
-            <div className="img">
-              <img src="../img/hoangton2.jpg" alt="" />
-              <div className="trangthai"></div>
-            </div>
-            <a href="#">Hoàng</a>
-          </div>
-          <div className="itemFriend">
-            <div className="img">
-              <img src="../img/hoangton3.jpg" alt="" />
-              <div className="trangthai"></div>
-            </div>
-            <a href="#">Hoàng</a>
-          </div>
-          <div className="itemFriend">
-            <div className="img">
-              <img src="../img/hoangton4.jpg" alt="" />
-              <div className="trangthai"></div>
-            </div>
-            <a href="#">Hoàng</a>
-          </div>
-          <div className="itemFriend">
-            <div className="img">
-              <img src="../img/hoangton3.jpg" alt="" />
-              <div className="trangthai"></div>
-            </div>
-            <a href="#">Hoàng</a>
-          </div>
-          <div className="itemFriend">
-            <div className="img">
-              <img src="../img/hoangton2.jpg" alt="" />
-              <div className="trangthai"></div>
-            </div>
-            <a href="#">Hoàng</a>
-          </div>
-          <div className="itemFriend">
-            <div className="img">
-              <img src="../img/hoangton1.jpg" alt="" />
-              <div className="trangthai"></div>
-            </div>
-            <a href="#">Hoàng</a>
-          </div>
-          <div className="itemFriend">
-            <div className="img">
-              <img src="../img/hoangton.jpg" alt="" />
-              <div className="trangthai"></div>
-            </div>
-            <a href="#">Hoàng</a>
-          </div>
-          <div className="itemFriend">
-            <div className="img">
-              <img src="../img/hoangton4.jpg" alt="" />
-              <div className="trangthai"></div>
-            </div>
-            <a href="#">Hoàng</a>
-          </div>
-          <div className="itemFriend">
-            <div className="img">
-              <img src="../img/hoangton1.jpg" alt="" />
-              <div className="trangthai"></div>
-            </div>
-            <a href="#">Hoàng</a>
-          </div>
-          <div className="itemFriend">
-            <div className="img">
-              <img src="../img/hoangton1.jpg" alt="" />
-              <div className="trangthai"></div>
-            </div>
-            <a href="#">Hoàng</a>
-          </div>
+            ))
+          }
         </div>
         <a className="nextFriendBtn bi bi-caret-right" id="btn"></a>
       </div>
