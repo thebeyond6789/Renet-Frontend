@@ -24,7 +24,6 @@ const Friend: React.FC = () => {
           containerFriend.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         });
       }
-
       if (prevFriendBtn) {
         prevFriendBtn.removeEventListener('click', () => {
           containerFriend.scrollBy({ left: -scrollAmount, behavior: 'smooth' });

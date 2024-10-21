@@ -7,15 +7,14 @@ import DangTheoDoi from "../currentlyMonitoring/page"
 import PostIndividual from "../postIndividual/page"
 import ReelIndividual from "../reelIndividual/page"
 export default function Profile(){
-    function showNguoiTheoDoi(){
-        let nguoitheodoi = (document.getElementById('containernguoitheodoi')as HTMLElement)
-        nguoitheodoi.style.display = 'block'
-    }
-
-    function showDangTheoDoi(){
-        let dangtheodoi = (document.getElementById('containerdangtheodoi')as HTMLElement)
-        dangtheodoi.style.display = 'block'
-    }
+  function showNguoiTheoDoi(){
+    let nguoitheodoi = (document.getElementById('containernguoitheodoi') as HTMLElement);
+    nguoitheodoi.style.display = 'block';
+}
+function showDangTheoDoi(){
+    let dangtheodoi = (document.getElementById('containerdangtheodoi') as HTMLElement);
+    dangtheodoi.style.display = 'block';
+}
     function hienPosts(){
       let post = (document.getElementById('containerPosts')as HTMLElement)
       let reel = (document.getElementById('containerReels')as HTMLElement)
