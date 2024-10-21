@@ -1,288 +1,73 @@
-import '../reelIndividual/reel.css'
-export default function ReelIndividual(){
-    function clickHienDetailreels(){
-        let reel = document.getElementById('detailReels')as HTMLElement
-        reel.style.display = "block"
-    }
-    function clickAnDetailreels(){
-        let reel = document.getElementById('detailReels')as HTMLElement
-        reel.style.display = "none"
-    }
-    function clickHienCommentReels(){
-        let commentReel = document.getElementById('commentReels')as HTMLElement
-        commentReel.style.display = "block"
-    }
-    function clickAnCommentReels(){
-        let commentReel = document.getElementById('commentReels')as HTMLElement
-        commentReel.style.display = "none"
-    }
-    return(
-        <>
-        <div id="containerReels">
-        <div className="childReels">
-          <div className="item" onClick={clickHienDetailreels} >
-            <video>
-              <source src="../img/video1.mp4" type="video/mp4"/>
-          </video>
-          <span><i className="bi bi-play-fill"></i>1000 N</span>
-          </div>
-          <div className="item">
-            <video>
-              <source src="../img/video2.mp4" type="video/mp4"/>
-          </video>
-          <span><i className="bi bi-play-fill"></i>1000 N</span>
-          </div>
-          <div className="item">
-            <video>
-              <source src="../img/video3.mp4" type="video/mp4"/>
-          </video>
-          <span><i className="bi bi-play-fill"></i>1000 N</span>
-          </div>
-          <div className="item">
-            <video>
-              <source src="../img/video4.mp4" type="video/mp4"/>
-          </video>
-          <span><i className="bi bi-play-fill"></i>1000 N</span>
-          </div>
-          <div className="item">
-            <video>
-              <source src="../img/video1.mp4" type="video/mp4"/>
-          </video>
-          <span><i className="bi bi-play-fill"></i>1000 N</span>
-          </div>
-          <div className="item">
-            <video>
-              <source src="../img/video2.mp4" type="video/mp4"/>
-          </video>
-          <span><i className="bi bi-play-fill"></i>1000 N</span>
-          </div>
-          <div className="item">
-            <video>
-              <source src="../img/video3.mp4" type="video/mp4"/>
-          </video>
-          <span><i className="bi bi-play-fill"></i>1000 N</span>
-          </div>
-          <div className="item">
-            <video>
-              <source src="../img/video4.mp4" type="video/mp4"/>
-          </video>
-          <span><i className="bi bi-play-fill"></i>1000 N</span>
-          </div>
-        </div>
-      </div>
-      {/* <!-- detailreel --> */}
-      <div className="detailReel" id="detailReels">
-        <i id="closeCart" 
-        onClick={clickAnDetailreels}
-        className="bi bi-x-lg"></i>
-        <div className="postLeft">
-            <div className="item">
-              <div className="d-flex">
-                <div className="img">
-                  <img src="../img/hoangton.jpg" alt="" />
-                </div>
-                <div className="content d-flex">
-                  <a href="profilePage.html">Hoàng Tôn</a>
-                  <span>6 ngày</span>
-                </div>
-              </div>
-              <div className="post-images">
-                <video controls autoPlay muted>
-                    <source src="../img/video3.mp4" type="video/mp4" />
-                </video>
+import React, { useState, useEffect } from "react";
+import ReelGrid from "../../components/ReelIndividual/ReelGrid";
+import DetailReel from "../../components/ReelIndividual/DetailReel";
+import CommentReel from "../../components/ReelIndividual/CommentReel";
 
-              </div>
-              <div className="containerIcon">
-                <i className="fa-regular fa-heart"></i>
-                <i
-                onClick={clickHienCommentReels}
-                  className="fa-regular fa-comment"
-                ></i>
-                <i className="fa-regular fa-paper-plane"></i>
-              </div>
-              <div className="contentTitle">
-                <a
-                  className="luotThich d-block text-decoration-none text-black"
-                  href="#">2 lượt thích</a>
-                <a className="titlePost" href="#"
-                  ><label>Hoàng Tôn</label> Hello(title) helo helo helo
-                  helo helo helo helo helo helo helo helo helohelo helo
-                  helo😒😒😒</a>
-              </div>
-              <div className="inPutThemBL">
-                <div className="d-flex">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Thêm bình luận..."
-                  />
-                  <button type="submit"><a href="#">Đăng</a></button>
-                </div>
-              </div>
-            </div>
-        </div>
-      </div>
-      {/* <!-- commentreels --> */}
-      <div className="commentReel" id="commentReels">
-        <i id="closeCart" onClick={clickAnCommentReels}
-        className="bi bi-x-lg"></i>
-        <div className="childcommentReel">
-          <div className="detailRight">
-            <div className="item">
-              <div className="post-images">
-                <video controls autoPlay muted>
-                  <source src="../img/video3.mp4" type="video/mp4"/>
-              </video>                
-              </div>
-            </div>
-          </div>
-          <div className="detailLeft">
-            <div className="avatarPost">
-              <img src="../img/hoangton1.jpg" alt="" />
-              <a href="#">Hoangton1210</a>
-            </div>
-            <div className="containerComment">
-              <div className="commentdetail">
-                <div className="avatarUser">
-                  <div className="img">
-                    <img src="../img/hoangton1.jpg" alt=""/>
-                  </div>
-                  <div className="content">
-                    <a href="#">Hoàng Tôn</a>
-                    <label>đẹp trai quá</label>
-                  </div>
-                </div>
-                <div className="repComment">
-                  <span>1 tuần</span>
-                  <a href="#">Trả lời</a>
-                </div>
-              </div>
-              <div className="commentdetail">
-                <div className="avatarUser">
-                  <div className="img">
-                    <img src="../img/hoangton1.jpg" alt="" />
-                  </div>
-                  <div className="content">
-                    <a href="#">Hoàng Tôn</a>
-                    <label>đẹp trai quá</label>
-                  </div>
-                </div>
-                <div className="repComment">
-                  <span>1 tuần</span>
-                  <a href="#">Trả lời</a>
-                </div>
-              </div>
-              <div className="commentdetail">
-                <div className="avatarUser">
-                  <div className="img">
-                    <img src="../img/hoangton1.jpg" alt="" />
-                  </div>
-                  <div className="content">
-                    <a href="#">Hoàng Tôn</a>
-                    <label>đẹp trai quá</label>
-                  </div>
-                </div>
-                <div className="repComment">
-                  <span>1 tuần</span>
-                  <a href="#">Trả lời</a>
-                </div>
-              </div>
-              <div className="commentdetail">
-                <div className="avatarUser">
-                  <div className="img">
-                    <img src="../img/hoangton1.jpg" alt="" />
-                  </div>
-                  <div className="content">
-                    <a href="#">Hoàng Tôn</a>
-                    <label>đẹp trai quá</label>
-                  </div>
-                </div>
-                <div className="repComment">
-                  <span>1 tuần</span>
-                  <a href="#">Trả lời</a>
-                </div>
-              </div>
-              <div className="commentdetail">
-                <div className="avatarUser">
-                  <div className="img">
-                    <img src="../img/hoangton1.jpg" alt="" />
-                  </div>
-                  <div className="content">
-                    <a href="#">Hoàng Tôn</a>
-                    <label>đẹp trai quá</label>
-                  </div>
-                </div>
-                <div className="repComment">
-                  <span>1 tuần</span>
-                  <a href="#">Trả lời</a>
-                </div>
-              </div>
-              <div className="commentdetail">
-                <div className="avatarUser">
-                  <div className="img">
-                    <img src="../img/hoangton1.jpg" alt=""/>
-                  </div>
-                  <div className="content">
-                    <a href="#">Hoàng Tôn</a>
-                    <label>đẹp trai quá</label>
-                  </div>
-                </div>
-                <div className="repComment">
-                  <span>1 tuần</span>
-                  <a href="#">Trả lời</a>
-                </div>
-              </div>
-              <div className="commentdetail">
-                <div className="avatarUser">
-                  <div className="img">
-                    <img src="../img/hoangton1.jpg" alt=""/>
-                  </div>
-                  <div className="content">
-                    <a href="#">Hoàng Tôn</a>
-                    <label>đẹp trai quá</label>
-                  </div>
-                </div>
-                <div className="repComment">
-                  <span>1 tuần</span>
-                  <a href="#">Trả lời</a>
-                </div>
-              </div>
-              <div className="commentdetail">
-                <div className="avatarUser">
-                  <div className="img">
-                    <img src="../img/hoangton1.jpg" alt="" />
-                  </div>
-                  <div className="content">
-                    <a href="#">Hoàng Tôn</a>
-                    <label>đẹp trai quá</label>
-                  </div>
-                </div>
-                <div className="repComment">
-                  <span>1 tuần</span>
-                  <a href="#">Trả lời</a>
-                </div>
-              </div>
-            </div>
-            <div className="containerIcon">
-              <i className="fa-regular fa-heart"></i>
-              <i className="fa-regular fa-comment"></i>
-              <i className="fa-regular fa-paper-plane"></i>
-              <span className="d-block">1000 lượt thích </span>
-            </div>
-            <div className="inPutThemBL">
-              <div className="d-flex">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Thêm bình luận..."
-                />
-                <i className="fa-solid fa-face-smile"></i>
-                <button type="submit"><a href="#">Đăng</a></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-        </>
-    )
+interface Video {
+  _id: string; // Unique identifier for the video
+  video: string; // Video URL
+  title: string; // Title of the reel
+  content?: string; // Optional content
+  dateReel: string; // Date of the reel
+  idAccount: string; // Account ID
+}
+
+export default function ReelIndividual() {
+  const [showDetailReel, setShowDetailReel] = useState(false);
+  const [showCommentReel, setShowCommentReel] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
+  const [videos, setVideos] = useState<Video[]>([]); // State to hold fetched videos
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/reel/allReel`
+        ); // Fetching data from the API
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json(); // Assuming the API returns an array of videos
+        console.log(data);
+        setVideos(data);
+      } catch (error) {
+        console.error("Error fetching videos:", error);
+      }
+    };
+
+    fetchVideos();
+  }, []); // Empty dependency array to run once on mount
+
+  const handleReelClick = (video: Video) => {
+    setSelectedVideo(video);
+    setShowDetailReel(true);
+  };
+
+  const handleCloseDetailReel = () => {
+    setShowDetailReel(false);
+    setSelectedVideo(null);
+  };
+
+  const handleCommentClick = () => {
+    setShowCommentReel(true);
+  };
+
+  const handleCloseCommentReel = () => {
+    setShowCommentReel(false);
+  };
+
+  return (
+    <>
+      <ReelGrid videos={videos} onReelClick={handleReelClick} />{" "}
+      {/* Pass videos to ReelGrid */}
+      {showDetailReel && selectedVideo && (
+        <DetailReel
+          video={selectedVideo}
+          onClose={handleCloseDetailReel}
+          onCommentClick={handleCommentClick}
+        />
+      )}
+      {showCommentReel && <CommentReel onClose={handleCloseCommentReel} />}
+    </>
+  );
 }
