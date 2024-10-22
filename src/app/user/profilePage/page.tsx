@@ -68,9 +68,7 @@ function showDangTheoDoi(){
       </div>
       <PostIndividual/>
       <ReelIndividual/>
-      {/* <!-- người theo dõi --> */}
       <Flower/>
-      {/* <!-- dang theo dõi --> */}
       <DangTheoDoi/>
           </main>
         </>
