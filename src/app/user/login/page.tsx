@@ -24,9 +24,7 @@ export default function Login() {
   const router = useRouter();
   const [loginAttempts, setLoginAttempts] = useState<number>(0);
   const [lockedOut, setLockedOut] = useState<boolean>(false);
-  const [forgotPasswordEmail, setForgotPasswordEmail] = useState<string>('');
-  const [forgotPasswordMessage, setForgotPasswordMessage] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loginError, setLoginError] = useState<string | null>(null); // New state for login error message
 
   // Formik setup for login form
   const formik = useFormik<LoginFormValues>({
@@ -38,7 +36,7 @@ export default function Login() {
       email: Yup.string().email('Email không hợp lệ').required('Bắt buộc'),
       password: Yup.string().required('Bắt buộc'),
     }),
-    onSubmit: async (values: LoginFormValues, { setSubmitting, setFieldError }: FormikHelpers<LoginFormValues>) => {
+    onSubmit: async (values: LoginFormValues, { setSubmitting }: FormikHelpers<LoginFormValues>) => {
       try {
         if (lockedOut) {
           throw new Error('Bạn đã bị khóa vì quá nhiều lần đăng nhập không thành công. Vui lòng thử lại sau.');
@@ -62,6 +60,7 @@ export default function Login() {
         router.push('/user/homePage');
         alert('Đăng Nhập thành công!');
         setLoginAttempts(0);
+        setLoginError(null); // Clear any previous error messages
       } catch (error: any) {
         setLoginAttempts((prevAttempts) => {
           const newAttempts = prevAttempts + 1;
@@ -72,38 +71,12 @@ export default function Login() {
           return newAttempts;
         });
 
-        setFieldError('general', error.message || 'Thông tin đăng nhập không chính xác. Vui lòng thử lại.');
+        setLoginError(error.message || 'Thông tin đăng nhập không chính xác. Vui lòng thử lại.');
       } finally {
         setSubmitting(false);
       }
     },
   });
-
-  // Handle forgot password functionality
-  const handleForgotPassword = async () => {
-    setLoading(true);
-    setForgotPasswordMessage('');
-    try {
-      const res = await fetch('http://localhost:4000/account/forgot-password', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: forgotPasswordEmail }),
-      });
-
-      if (!res.ok) {
-        const errorData: ErrorResponse = await res.json();
-        throw new Error(errorData.message || 'Gửi yêu cầu quên mật khẩu thất bại');
-      }
-
-      setForgotPasswordMessage('Yêu cầu quên mật khẩu đã được gửi. Vui lòng kiểm tra email của bạn.');
-    } catch (error: any) {
-      setForgotPasswordMessage(error.message || 'Đã có lỗi xảy ra. Vui lòng thử lại sau.');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <>
@@ -175,29 +148,17 @@ export default function Login() {
                   ) : null}
                 </div>
 
-                {formik.errors.general && (
+                {loginError && (
                   <div className="text-danger text-center mb-2">
-                    {formik.errors.general}
+                    {loginError}
                   </div>
                 )}
 
                 <div className="quenmatkhau m-auto">
-                  <a
-                    href="#/"
-                    className="text-decoration-none"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleForgotPassword();
-                    }}
-                  >
+                  <a href="#/" className="text-decoration-none">
                     Quên mật khẩu?
                   </a>
                 </div>
-
-                {loading && <div className="text-center">Đang gửi yêu cầu...</div>}
-                {forgotPasswordMessage && (
-                  <div className="text-center text-success my-2">{forgotPasswordMessage}</div>
-                )}
 
                 <div className="text-center btnLogin">
                   <button type="submit" disabled={formik.isSubmitting || lockedOut}>
