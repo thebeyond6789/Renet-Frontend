@@ -26,13 +26,7 @@ const ReelItem: React.FC<ReelItemProps> = ({ reel }) => {
     <div className="video-item">
       <div className="video-content">
         <div className="video-wrapper">
-          <video 
-            src= {reel.video}
-            // {`${process.env.NEXT_PUBLIC_API_URL}/reel/video/${reel._id}`}
-            controls 
-            loop 
-            muted
-          />
+          <video src={reel.video} controls loop autoPlay />
           <div className="video-info">
             <div className="user-info">
               <div className="avatar"></div>

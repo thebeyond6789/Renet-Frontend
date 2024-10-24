@@ -18,11 +18,12 @@ const ReelContainer: React.FC = () => {
   useEffect(() => {
     const fetchReels = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/reel/allReel`);
-        const { data } = await response.json();
-        setReels(Array.isArray(data) ? data : []);  // Đảm bảo data là array
+        const response = await fetch(`http://localhost:4000/reel/allReel`);
+        const data = await response.json();
+        console.log("Fetched data:", data);
+        setReels(Array.isArray(data) ? data : []);
       } catch (error) {
-        console.error('Error fetching reels:', error);
+        console.error("Error fetching reels:", error);
       } finally {
         setLoading(false);
       }
