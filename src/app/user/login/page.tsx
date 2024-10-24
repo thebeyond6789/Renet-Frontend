@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useFormik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // Define types for the form values and possible API responses
 interface LoginFormValues {
@@ -22,9 +22,21 @@ interface ErrorResponse {
 
 export default function Login() {
   const router = useRouter();
-  const [loginAttempts, setLoginAttempts] = useState<number>(0);
+  
   const [lockedOut, setLockedOut] = useState<boolean>(false);
-  const [loginError, setLoginError] = useState<string | null>(null); // New state for login error message
+  const [loginError, setLoginError] = useState<string | null>(null);
+
+  // Automatically unlock the form after 5 minutes (300 seconds)
+  useEffect(() => {
+    if (lockedOut) {
+      const unlockTimer = setTimeout(() => {
+        setLockedOut(false);
+        // setLoginAttempts(0); // Reset login attempts after lockout period
+      }, 300000); // 5 minutes
+
+      return () => clearTimeout(unlockTimer);
+    }
+  }, [lockedOut]);
 
   // Formik setup for login form
   const formik = useFormik<LoginFormValues>({
@@ -59,17 +71,17 @@ export default function Login() {
         localStorage.setItem('token', data.token);
         router.push('/user/homePage');
         alert('Đăng Nhập thành công!');
-        setLoginAttempts(0);
+        // setLoginAttempts(0); // Reset attempts on successful login
         setLoginError(null); // Clear any previous error messages
       } catch (error: any) {
-        setLoginAttempts((prevAttempts) => {
-          const newAttempts = prevAttempts + 1;
-          if (newAttempts >= 3) {
-            setLockedOut(true);
-            alert('Bạn đã nhập sai quá nhiều lần. Vui lòng thử lại sau.');
-          }
-          return newAttempts;
-        });
+        // setLoginAttempts((prevAttempts) => {
+        //   const newAttempts = prevAttempts + 1;
+        //   if (newAttempts >= 3) {
+        //     setLockedOut(true);
+        //     alert('Bạn đã nhập sai quá nhiều lần. Vui lòng thử lại sau.');
+        //   }
+        //   return newAttempts;
+        // });
 
         setLoginError(error.message || 'Thông tin đăng nhập không chính xác. Vui lòng thử lại.');
       } finally {

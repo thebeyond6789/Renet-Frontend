@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import '../follower/flower.css';
+
 interface Follower {
   _id: string;
   name: string;
   image: string;
 }
+
 export default function Flower() {
   const [followers, setFollowers] = useState<Follower[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [isVisible, setIsVisible] = useState<boolean>(true); 
+  const [isVisible, setIsVisible] = useState<boolean>(true);
+
+  // Fetch dữ liệu người theo dõi từ API khi component được render
   useEffect(() => {
     const fetchFollowers = async () => {
       try {
@@ -30,20 +34,25 @@ export default function Flower() {
     fetchFollowers();
   }, []);
 
+  // Đóng danh sách người theo dõi
   const closeNguoiTheoDoi = (): void => {
-    setIsVisible(false); 
+    setIsVisible(false);
   };
+
+  // Lọc người theo dõi theo tên dựa vào từ khóa tìm kiếm
   const filteredFollowers = followers.filter(follower =>
     follower.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  const followUser = async (followerId: string): Promise<void> => {
+
+  // Hàm theo dõi người dùng mới
+  const followUser = async (name: string, image: string): Promise<void> => {
     try {
-      const response = await fetch(`http://localhost:4000/followers/add`, {
+      const response = await fetch('http://localhost:4000/followers/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ id: followerId }),
+        body: JSON.stringify({ name, image }),
       });
 
       if (!response.ok) {
@@ -53,11 +62,12 @@ export default function Flower() {
       const newFollower = await response.json();
       setFollowers(prevFollowers => [...prevFollowers, newFollower]);
     } catch (error: any) {
-      console.error("Error following user:", error);
-      setError(error.message); 
+      console.error('Error following user:', error);
+      setError(error.message);
     }
   };
-  if (!isVisible) return null; 
+
+  if (!isVisible) return null; // Ẩn component nếu không hiển thị
 
   return (
     <div id="containernguoitheodoi">
@@ -86,7 +96,7 @@ export default function Flower() {
                 <a href="#">{follower.name}</a>
               </div>
               <div>
-                <button onClick={() => followUser(follower._id)}>
+                <button onClick={() => followUser(follower.name, follower.image)}>
                   Theo dõi
                 </button>
               </div>
