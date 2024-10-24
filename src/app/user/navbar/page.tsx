@@ -30,7 +30,9 @@ export default function Nav(){
               <li>
                 <Link href="/user/reelPage"><i className="bi bi-camera-video"></i><span>Reels</span></Link>
               </li>
-              <li><a href="#"><i className="bi bi-plus-circle"></i><span>Đăng bài</span></a></li>
+              <li>
+                <Link href="/user/postORreel"><i className="bi bi-plus-circle"></i><span>Đăng bài</span></Link>
+                </li>
               <li><Link href="/user/notificationPage">
               <i className="bi bi-bell"></i><span>Thông báo</span>
               </Link></li>

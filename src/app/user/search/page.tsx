@@ -45,7 +45,7 @@ export default function Search() {
 
   return (
     <>
-      <ul className="ulnavcon" id="ulnavcon" style={{ display: 'block' }}>
+      <ul className="ulnavcon" id="ulnavcon" style={{ display: 'none' }}>
         <div className="containercon">
           <h4>Tìm kiếm</h4>
           <div className="Divform">

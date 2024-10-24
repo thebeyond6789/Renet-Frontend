@@ -36,6 +36,8 @@ export default function RootLayout({
       href="https://fonts.googleapis.com/css2?family=Playwrite+ES+Deco:wght@100..400&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"/>
+
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <div className="containerCha">

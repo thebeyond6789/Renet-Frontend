@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import "../../detailPost/detail.css"
 import Link from 'next/link';
-
+import CommentPost from '../../commentPost/[id]/page';
 export default function DetailPost({ params }: { params: { id: string } }) {
   const [detailPost, setDetailPost] = useState<any>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
@@ -73,51 +73,8 @@ export default function DetailPost({ params }: { params: { id: string } }) {
             </div>
           </div>
         </div>
-        
-        {/* Phần bình luận */}
-        <div className="detailLeft">
-          <div className="avatarPost">
-            <img src="../../img/hoangton1.jpg" alt="" />
-            <a href="#">Hoangton1210</a>
-          </div>
-          <div className="containerComment">
-            {[...Array(7)].map((_, index) => (
-              <div className="commentdetail" key={index}>
-                <div className="avatarUser">
-                  <div className="img">
-                    <img src="../../img/hoangton1.jpg" alt="" />
-                  </div>
-                  <div className="content">
-                    <a href="#">Hoàng Tôn</a>
-                    <label>đẹp trai quá</label>
-                  </div>
-                </div>
-                <div className="repComment">
-                  <span>1 tuần</span>
-                  <a href="#">Trả lời</a>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="containerIcon">
-            <i className="fa-regular fa-heart"></i>
-            <i className="fa-regular fa-comment"></i>
-            <i className="fa-regular fa-paper-plane"></i>
-            <span className="d-block">1000 lượt thích </span>
-          </div>
-          <div className="inPutThemBL">
-            <div className="d-flex">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Thêm bình luận..."
-              />
-              <i className="fa-solid fa-face-smile"></i>
-              <button type="submit"><a href="#">Đăng</a></button>
-            </div>
-          </div>
-        </div>
-      </div>
+        <CommentPost params={params} />
+    </div>
     </div>
   );
 }
